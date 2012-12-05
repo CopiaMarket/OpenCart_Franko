@@ -1,23 +1,21 @@
 # OpenCart_Litecoin
 ### by John Rayes (live627)
-### by John Atkinson (jga) from [BTC Gear](http://btcgear.com/) - made original Bitcoin version
+### by John Atkinson (jga) from [BTC Gear](http://ltcgear.com/) - made original Bitcoin version
 
 Donations can be sent here: **LXtkHiEXGmZuhAk7WvbCSfXKgGsUVcmQGm**
 
 This is an OpenCart payment module that communicates with a Litecoin client using JSON RPC.
 
-This code accurately converts USD to BTC using the up-to-the-minute MtGox average.  It is completely self contained and requires no cron jobs or external hardware other than a properly configured Litecoind server.  Every order creates a new Litecoin address for payment and gives it a label corresponding to the order_id of the order.  It installs like any other OpenCart plugin and it is completely integrated with OpenCart.
+This code accurately converts USD to LTC using the up-to-the-minute BTC-E average.  It is completely self contained and requires no cron jobs or external hardware other than a properly configured Litecoind server.  Every order creates a new Litecoin address for payment and gives it a label corresponding to the order_id of the order.  It installs like any other OpenCart plugin and it is completely integrated with OpenCart.
 
 This extension has been tested with OpenCart versions between 1.5.2.x and 1.5.4.
-
-Any questions or comments can be sent to support@btcgear.com.
 
 # Installation
 
 1. Upload all files maintaining OpenCart folder structure.
 2. Install the payment module in the admin console (Extensions > Payments > Litecoin > Install).
 3. Edit the payment module settings (Extensions > Payments > Litecoin > Edit).
-4. Run at least one test order through checkout up until payment (no payment required).  The first order initializes the Litecoin currency and will return 0 BTC for the order total.
+4. Run at least one test order through checkout up until payment (no payment required).  The first order initializes the Litecoin currency and will return 0 LTC for the order total.
 
 ## Explanation of Settings
 
@@ -26,7 +24,7 @@ Any questions or comments can be sent to support@btcgear.com.
 * *Litecoin RPC Password*: This is the password in the "rpcpassword" line of your Litecoin.conf file.
 * *Litecoin RPC Port*: This is the port number in the "rpcport" line of your Litecoin.conf file.  The default port is 8332.
 * *The prefix for the address labels*: The addresses will be assigned to accounts named with the format [prefix]_[order_id].
-* *Show BTC as a store currency*: If you select yes, your customers will be able to view prices in BTC.
+* *Show LTC as a store currency*: If you select yes, your customers will be able to view prices in LTC.
 * *Status of a new order*: Choose a status for an order that has received payment with 0 confirmations.
 * *Status*: Enable the Litecoin payment module here.
 * *Sort Order*: Where you want this module to show up in relation to the other payment modules on the checkout page.

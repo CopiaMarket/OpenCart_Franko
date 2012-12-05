@@ -82,7 +82,7 @@ class ControllerPaymentLitecoin extends Controller {
         $this->data['entry_port']       = $this->language->get('entry_port');
         $this->data['entry_prefix']       = $this->language->get('entry_prefix');
         $this->data['entry_order_status'] = $this->language->get('entry_order_status');
-        $this->data['entry_show_btc']         = $this->language->get('entry_show_btc');
+        $this->data['entry_show_ltc']         = $this->language->get('entry_show_ltc');
         $this->data['entry_status']         = $this->language->get('entry_status');
 		$this->data['entry_sort_order'] 	= $this->language->get('entry_sort_order');
 		
@@ -170,10 +170,10 @@ class ControllerPaymentLitecoin extends Controller {
 		} else {
 			$this->data[$this->payment_module_name.'_prefix'] = $this->config->get($this->payment_module_name.'_prefix');
 		} 
-        if (isset($this->request->post[$this->payment_module_name.'_show_btc'])) {
-			$this->data[$this->payment_module_name.'_show_btc'] = $this->request->post[$this->payment_module_name.'_show_btc'];
+        if (isset($this->request->post[$this->payment_module_name.'_show_ltc'])) {
+			$this->data[$this->payment_module_name.'_show_ltc'] = $this->request->post[$this->payment_module_name.'_show_ltc'];
 		} else {
-			$this->data[$this->payment_module_name.'_show_btc'] = $this->config->get($this->payment_module_name.'_show_btc');
+			$this->data[$this->payment_module_name.'_show_ltc'] = $this->config->get($this->payment_module_name.'_show_ltc');
 		}
 		if (isset($this->request->post[$this->payment_module_name.'_order_status_id'])) {
 			$this->data[$this->payment_module_name.'_order_status_id'] = $this->request->post[$this->payment_module_name.'_order_status_id'];

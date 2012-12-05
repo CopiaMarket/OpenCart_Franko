@@ -75,9 +75,9 @@ DEALINGS IN THE SOFTWARE.
             <?php } ?></td>
         </tr>
 		<tr>
-          <td><?php echo $entry_show_btc; ?></td>
-          <td><select name="litecoin_show_btc"> 
-              <?php if ($litecoin_show_btc) { ?>
+          <td><?php echo $entry_show_ltc; ?></td>
+          <td><select name="litecoin_show_ltc"> 
+              <?php if ($litecoin_show_ltc) { ?>
               <option value="1" selected="selected"><?php echo $text_yes; ?></option>
               <option value="0"><?php echo $text_no; ?></option>
               <?php } else { ?>
