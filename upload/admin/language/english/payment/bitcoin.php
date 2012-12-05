@@ -19,20 +19,20 @@ FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TOR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 DEALINGS IN THE SOFTWARE.
 */
-$_['heading_title']      = 'Litecoin';
+$_['heading_title']      = 'Bitcoin';
 
 // Text
 $_['text_payment']       = 'Payment';
-$_['text_success']       = 'Success: You have modified the Litecoin payment module!';
-$_['text_Litecoin'] = '<img src="view/image/payment/Litecoin.jpg" alt="Litecoin" title="Litecoin" />';
+$_['text_success']       = 'Success: You have modified the Bitcoin payment module!';
+$_['text_bitcoin'] = '<img src="view/image/payment/bitcoin.jpg" alt="Bitcoin" title="Bitcoin" />';
 $_['text_yes']       = 'Yes';
 $_['text_no']       = 'No';
 
 // Entry
-$_['entry_username']      = 'Litecoin RPC Username:';
-$_['entry_address']      = 'Litecoin RPC Host Address:';
-$_['entry_password']     = 'Litecoin RPC Password:';
-$_['entry_port']     = 'Litecoin RPC Port:<br /><span class="help">The default is 8332</span>';
+$_['entry_username']      = 'Bitcoin RPC Username:';
+$_['entry_address']      = 'Bitcoin RPC Host Address:';
+$_['entry_password']     = 'Bitcoin RPC Password:';
+$_['entry_port']     = 'Bitcoin RPC Port:<br /><span class="help">The default is 8332</span>';
 $_['entry_prefix']     = 'The prefix for the address labels:<br /><span class="help">The account will be in the form [prefix]_[order_id]</span>';
 $_['entry_order_status'] = 'Status of a new order:';
 $_['entry_show_btc']       = 'Show BTC as a store currency:';
@@ -41,9 +41,9 @@ $_['entry_sort_order']   = 'Sort Order:';
 
 // Error
 $_['error_permission']   = 'Warning: You do not have permission to modify bitpay payment module.';
-$_['error_username']      = 'Warning: Litecoin RPC Username is required';
-$_['error_address']      = 'Warning: Litecoin RPC Host Address is required';
-$_['error_password']     = 'Warning: Litecoin RPC Password is required';
-$_['error_port']     = 'Warning: Litecoin RPC Port is required';
+$_['error_username']      = 'Warning: Bitcoin RPC Username is required';
+$_['error_address']      = 'Warning: Bitcoin RPC Host Address is required';
+$_['error_password']     = 'Warning: Bitcoin RPC Password is required';
+$_['error_port']     = 'Warning: Bitcoin RPC Port is required';
 $_['error_prefix']     = 'Warning: Label prefix is required';
 ?>

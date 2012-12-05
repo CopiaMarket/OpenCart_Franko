@@ -20,12 +20,12 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 DEALINGS IN THE SOFTWARE.
 */
 
-class ControllerPaymentLitecoin extends Controller {
+class ControllerPaymentBitcoin extends Controller {
 
-    private $payment_module_name  = 'Litecoin';
+    private $payment_module_name  = 'bitcoin';
 	protected function index() {
         $this->language->load('payment/'.$this->payment_module_name);
-    	$this->data['button_Litecoin_confirm'] = $this->language->get('button_Litecoin_confirm');
+    	$this->data['button_bitcoin_confirm'] = $this->language->get('button_bitcoin_confirm');
 		$this->data['error_msg'] = $this->language->get('error_msg');
 				
 		$this->checkUpdate();
@@ -36,33 +36,33 @@ class ControllerPaymentLitecoin extends Controller {
 
 		$current_default_currency = "USD";
 		
-		$this->data['Litecoin_total'] = round($this->currency->convert($order['total'], $current_default_currency, "BTC"),4);
+		$this->data['bitcoin_total'] = round($this->currency->convert($order['total'], $current_default_currency, "BTC"),4);
 		
 		require_once('jsonRPCClient.php');
 		
-		$Litecoin = new jsonRPCClient('http://'.$this->config->get('Litecoin_rpc_username').':'.$this->config->get('Litecoin_rpc_password').'@'.$this->config->get('Litecoin_rpc_address').':'.$this->config->get('Litecoin_rpc_port').'/');
+		$bitcoin = new jsonRPCClient('http://'.$this->config->get('bitcoin_rpc_username').':'.$this->config->get('bitcoin_rpc_password').'@'.$this->config->get('bitcoin_rpc_address').':'.$this->config->get('bitcoin_rpc_port').'/');
 		
 		$this->data['error'] = false;
 		try {
-			$Litecoin_info = $Litecoin->getinfo();
+			$bitcoin_info = $bitcoin->getinfo();
 		} catch (Exception $e) {
 			$this->data['error'] = true;
-			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/Litecoin.tpl')) {
-				$this->template = $this->config->get('config_template') . '/template/payment/Litecoin.tpl';
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/bitcoin.tpl')) {
+				$this->template = $this->config->get('config_template') . '/template/payment/bitcoin.tpl';
 			} else {
-				$this->template = 'default/template/payment/Litecoin.tpl';
+				$this->template = 'default/template/payment/bitcoin.tpl';
 			}	
 			$this->render();
 			return;
 		}
 		$this->data['error'] = false;
 		
-		$this->data['Litecoin_send_address'] = $Litecoin->getaccountaddress($this->config->get('Litecoin_prefix').'_'.$order_id);
+		$this->data['bitcoin_send_address'] = $bitcoin->getaccountaddress($this->config->get('bitcoin_prefix').'_'.$order_id);
 		
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/Litecoin.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/payment/Litecoin.tpl';
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/bitcoin.tpl')) {
+			$this->template = $this->config->get('config_template') . '/template/payment/bitcoin.tpl';
 		} else {
-			$this->template = 'default/template/payment/Litecoin.tpl';
+			$this->template = 'default/template/payment/bitcoin.tpl';
 		}	
 		
 		$this->render();
@@ -74,20 +74,20 @@ class ControllerPaymentLitecoin extends Controller {
 		$order_id = $this->session->data['order_id'];
         $order = $this->model_checkout_order->getOrder($order_id);
 		$current_default_currency = "USD";		
-		$Litecoin_total = round($this->currency->convert($order['total'], $current_default_currency, "BTC"),4);
+		$bitcoin_total = round($this->currency->convert($order['total'], $current_default_currency, "BTC"),4);
 		require_once('jsonRPCClient.php');
-		$Litecoin = new jsonRPCClient('http://'.$this->config->get('Litecoin_rpc_username').':'.$this->config->get('Litecoin_rpc_password').'@'.$this->config->get('Litecoin_rpc_address').':'.$this->config->get('Litecoin_rpc_port').'/');
+		$bitcoin = new jsonRPCClient('http://'.$this->config->get('bitcoin_rpc_username').':'.$this->config->get('bitcoin_rpc_password').'@'.$this->config->get('bitcoin_rpc_address').':'.$this->config->get('bitcoin_rpc_port').'/');
 	
 		try {
-			$Litecoin_info = $Litecoin->getinfo();
+			$bitcoin_info = $bitcoin->getinfo();
 		} catch (Exception $e) {
 			$this->data['error'] = true;
 		}
 
-		$received_amount = $Litecoin->getreceivedbyaccount($this->config->get('Litecoin_prefix').'_'.$order_id,0);
-		if(round((float)$received_amount,4) >= round((float)$Litecoin_total,4)) {
+		$received_amount = $bitcoin->getreceivedbyaccount($this->config->get('bitcoin_prefix').'_'.$order_id,0);
+		if(round((float)$received_amount,4) >= round((float)$bitcoin_total,4)) {
 			$order = $this->model_checkout_order->getOrder($order_id);
-			$this->model_checkout_order->confirm($order_id, $this->config->get('Litecoin_order_status_id'));
+			$this->model_checkout_order->confirm($order_id, $this->config->get('bitcoin_order_status_id'));
 			echo true;
 		}
 		else {
@@ -101,7 +101,7 @@ class ControllerPaymentLitecoin extends Controller {
 			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code = 'BTC'");
 						
 			if(!$query->row) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "currency (title, code, symbol_right, decimal_place, status) VALUES ('Litecoin', 'BTC', ' BTC', '4', ".$this->config->get('Litecoin_show_btc').")");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "currency (title, code, symbol_right, decimal_place, status) VALUES ('Bitcoin', 'BTC', ' BTC', '4', ".$this->config->get('bitcoin_show_btc').")");
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code = 'BTC'");
 			}
 			

@@ -20,11 +20,11 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 DEALINGS IN THE SOFTWARE.
 */
 
-class ModelPaymentLitecoin extends Model {
+class ModelPaymentBitcoin extends Model {
   	public function getMethod($address) {
-		$this->load->language('payment/Litecoin');
+		$this->load->language('payment/bitcoin');
 		
-		if ($this->config->get('Litecoin_status')) {
+		if ($this->config->get('bitcoin_status')) {
         	$status = TRUE;
 		} else {
 			$status = FALSE;
@@ -34,9 +34,9 @@ class ModelPaymentLitecoin extends Model {
 	
 		if ($status) {  
       		$method_data = array( 
-        		'code'         	=> 'Litecoin',
+        		'code'         	=> 'bitcoin',
         		'title'      	=> $this->language->get('text_title'),
-				'sort_order' 	=> $this->config->get('Litecoin_sort_order'),
+				'sort_order' 	=> $this->config->get('bitcoin_sort_order'),
       		);
     	}
    
