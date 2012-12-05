@@ -20,7 +20,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 DEALINGS IN THE SOFTWARE.
 */
 
-class ControllerPaymentLitecoin extends Controller {
+class ControllerPaymentlitecoin extends Controller {
 
     private $payment_module_name  = 'litecoin';
 	protected function index() {
@@ -101,7 +101,7 @@ class ControllerPaymentLitecoin extends Controller {
 			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code = 'LTC'");
 						
 			if(!$query->row) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "currency (title, code, symbol_right, decimal_place, status) VALUES ('Litecoin', 'LTC', ' LTC', '4', ".$this->config->get('litecoin_show_btc').")");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "currency (title, code, symbol_right, decimal_place, status) VALUES ('litecoin', 'LTC', ' LTC', '4', ".$this->config->get('litecoin_show_ltc').")");
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code = 'LTC'");
 			}
 			
@@ -129,7 +129,7 @@ class ControllerPaymentLitecoin extends Controller {
 	}
 	
 	public function runUpdate() {
-		$path = "1/LTCUSD/public/ticker";
+		$path = "/2/ltc_usd/ticker";
 		$req = array();
 		
 		// API settings
@@ -156,7 +156,7 @@ class ControllerPaymentLitecoin extends Controller {
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MtGox PHP client; '.php_uname('s').'; PHP/'.phpversion().')');
 		}
-		curl_setopt($ch, CURLOPT_URL, 'https://mtgox.com/api/'.$path);
+		curl_setopt($ch, CURLOPT_URL, 'https://btc-e.com/api'.$path);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
@@ -166,10 +166,10 @@ class ControllerPaymentLitecoin extends Controller {
 		if ($res === false) throw new Exception('Could not get reply: '.curl_error($ch));
 		$dec = json_decode($res, true);
 		if (!$dec) throw new Exception('Invalid data received, please make sure connection is working and requested API exists');
-		$btcdata = $dec;
+		$ltcdata = $dec;
 		
 		$currency = "LTC";
-		$value = $btcdata['return']['avg']['value'];
+		$value = $ltcdata['ticker']['avg'];
 		
 		if ((float)$value) {
 			$value = 1/$value;
