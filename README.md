@@ -1,9 +1,8 @@
 # OpenCart_Litecoin
-### by John Atkinson (jga) from [BTC Gear](http://btcgear.com/)
+### by John Rayes (live627)
+### by John Atkinson (jga) from [BTC Gear](http://btcgear.com/) - made original Bitcoin version
 
-Donations can be paid here: **LXtkHiEXGmZuhAk7WvbCSfXKgGsUVcmQGm**
-
-Initial bounty paid by cablepair.
+Donations can be sent here: **LXtkHiEXGmZuhAk7WvbCSfXKgGsUVcmQGm**
 
 This is an OpenCart payment module that communicates with a Litecoin client using JSON RPC.
 
