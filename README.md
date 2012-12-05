@@ -1,7 +1,7 @@
 # OpenCart_Litecoin
 ### by John Atkinson (jga) from [BTC Gear](http://btcgear.com/)
 
-Donations can be paid here: **12ctRXVVPAXQ6CQyEXkBhvi33K7kP4CMB5**
+Donations can be paid here: **LXtkHiEXGmZuhAk7WvbCSfXKgGsUVcmQGm**
 
 Initial bounty paid by cablepair.
 
