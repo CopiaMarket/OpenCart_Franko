@@ -19,28 +19,28 @@ FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TOR
 OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 DEALINGS IN THE SOFTWARE.
 */
-class ControllerPaymentBitcoin extends Controller {
+class ControllerPaymentLitecoin extends Controller {
 	private $error = array();
-	private $payment_module_name  = 'bitcoin';
+	private $payment_module_name  = 'Litecoin';
 	
 	private function validate() {
 		if (!$this->user->hasPermission('modify', 'payment/'.$this->payment_module_name)) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-        if (!$this->request->post['bitcoin_rpc_username']) {
+        if (!$this->request->post['Litecoin_rpc_username']) {
             $this->error['username'] = $this->language->get('error_username');
         }
-        if (!$this->request->post['bitcoin_rpc_address']) {
+        if (!$this->request->post['Litecoin_rpc_address']) {
             $this->error['address'] = $this->language->get('error_address');
         }
-        if (!$this->request->post['bitcoin_rpc_password']) {
+        if (!$this->request->post['Litecoin_rpc_password']) {
             $this->error['password'] = $this->language->get('error_password');
         }
-        if (!$this->request->post['bitcoin_rpc_port']) {
+        if (!$this->request->post['Litecoin_rpc_port']) {
             $this->error['port'] = $this->language->get('error_port');
         }
-        if (!$this->request->post['bitcoin_prefix']) {
+        if (!$this->request->post['Litecoin_prefix']) {
             $this->error['prefix'] = $this->language->get('error_prefix');
         }
 		
@@ -135,7 +135,7 @@ class ControllerPaymentBitcoin extends Controller {
 
         $this->data['breadcrumbs'][] = array(
             'text'      => $this->language->get('heading_title'),
-            'href'      => $this->url->link('payment/bitcoin', 'token=' . $this->session->data['token'], 'SSL'),
+            'href'      => $this->url->link('payment/Litecoin', 'token=' . $this->session->data['token'], 'SSL'),
             'separator' => ' :: '
         );
 
